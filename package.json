@@ -1,0 +1,19 @@
+{
+  "name": "unity-node",
+  "version": "1.0.0",
+  "description": "Unity 3d networking with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OprisorValeriuVladut/Unity-Node.js.git"
+  },
+  "author": "Oprisor Valeriu-Vladut",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OprisorValeriuVladut/Unity-Node.js/issues"
+  },
+  "homepage": "https://github.com/OprisorValeriuVladut/Unity-Node.js#readme"
+}
