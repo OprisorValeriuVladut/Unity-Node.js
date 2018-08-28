@@ -1,9 +1,6 @@
-var http = require('http');
+var express = require('express');
 
-var server = http.createServer(function(req,res){
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end(' mergeeeee !! ');
-})
-server.listen(process.env.PORT || 3000, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-  });
+var app = express();
+
+app.listen(3000);
+console.log('You are listening to port 3000');
