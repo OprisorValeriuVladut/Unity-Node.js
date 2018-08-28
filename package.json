@@ -4,7 +4,7 @@
   "description": "Unity 3d networking with Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "start"
+    "test": "index.js"
   },
   "repository": {
     "type": "git",
