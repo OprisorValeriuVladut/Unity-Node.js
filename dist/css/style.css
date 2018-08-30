@@ -88,5 +88,6 @@ body{
 
 #logo{
     position: relative;
+    width: 50px;
     left: 36%;
 }

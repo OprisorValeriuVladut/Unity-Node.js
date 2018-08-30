@@ -38,6 +38,7 @@ app.post('/register-success', function (req, res) {
 app.post('/login', function (req, res) {
     let redirectBool;
     db.getCollections(req.body.email, req.body.password).then(function (result) {
+        console.log(req.body.email, " | ", req.body.password);
         res.render(result ? 'dashboard' : 'register');
     });
 });

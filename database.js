@@ -6,19 +6,43 @@ const connect = mongoose.connect(URL, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 const accountSchema = new mongoose.Schema({
-    first_name: String,
-    last_name: String,
-    email: String,
-    password: String
+    acount_info: {
+        first_name: String,
+        last_name: String,
+        email: String,
+        password: String
+    },
+    player_info: {
+        player_name: String,
+        player_level: String,
+        player_color: String,
+        player_position: {
+            x: Number,
+            y: Number,
+            z: Number
+        }
+    }
 });
 
 const saveAccounttoDB = function (first_name, last_name, email, password) {
     var model = mongoose.model('Registration', accountSchema);
     var account = model({
-        first_name: first_name,
-        last_name: last_name,
-        email: email,
-        password: password
+        acount_info: {
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
+            password: password
+        },
+        player_info: {
+            player_name: "-",
+            player_level: "-",
+            player_color: "-",
+            player_position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
+        }
     }).save(function (err) {
         if (err) return handleError(err);
     });
@@ -45,7 +69,7 @@ const getCollections = (email, password) => {
 const checkAvailability = (email, password, result) => {
     let canNavigate = false;
     result.forEach(element => {
-        if (element['email'] === email && element['password'] === password) {
+        if (element['acount_info']['email'] === email && element['acount_info']['password'] === password) {
             canNavigate = true;
         }
     });
