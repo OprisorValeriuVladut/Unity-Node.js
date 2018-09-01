@@ -6,43 +6,37 @@ const connect = mongoose.connect(URL, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 const accountSchema = new mongoose.Schema({
-    acount_info: {
-        first_name: String,
-        last_name: String,
-        email: String,
-        password: String
+    first_name: String,
+    last_name: String,
+    email: String,
+    password: String,
+    level: Number,
+    player_name: String,
+    player_color: String,
+    player_position: {
+        x: Number,
+        y: Number,
+        z: Number
     },
-    player_info: {
-        player_name: String,
-        player_level: String,
-        player_color: String,
-        player_position: {
-            x: Number,
-            y: Number,
-            z: Number
-        }
-    }
+    current_date: String
 });
 
 const saveAccounttoDB = function (first_name, last_name, email, password) {
     var model = mongoose.model('Registration', accountSchema);
     var account = model({
-        acount_info: {
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            password: password
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        password: password,
+        level: 0,
+        player_name: "-",
+        player_color: "White",
+        player_position: {
+            x: 0,
+            y: 0,
+            z: 0
         },
-        player_info: {
-            player_name: "-",
-            player_level: "-",
-            player_color: "-",
-            player_position: {
-                x: 0,
-                y: 0,
-                z: 0
-            }
-        }
+        current_date: Date.now()
     }).save(function (err) {
         if (err) return handleError(err);
     });

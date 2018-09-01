@@ -2,6 +2,16 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var db = require('./database.js');
+var io = require('socket.io')({
+	transports: ['websocket'],
+});
+io.attach(5001);
+
+io.on('connection', function(socket){
+	socket.on('beep', function(){
+		socket.emit('tteesstt');
+	});
+})
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/dist'));
