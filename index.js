@@ -4,8 +4,6 @@ var app = express();
 var db = require('./database.js');
 var socket = require('./socket.js');
 
-socket.socketInit();
-
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({
@@ -45,6 +43,8 @@ app.post('/login', function (req, res) {
     });
 });
 
-
-app.listen(process.env.PORT || 5000)
-console.log('You are listening to port 5000'); 
+app.set('port', (process.env.PORT || 5000));
+var server = app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});
+socket.socketInit(server);
